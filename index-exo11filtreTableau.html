@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JQ Filtrer un tableau</title>
+        <style>
+            table {
+                width: 100%;
+            }
+
+            table th {
+                text-align: left;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <section class="demo">
+            <h2><span>Filtre du DOM</span></h2>
+            <section>
+                <h2>Filtre d'un tableau</h2>
+                <h3></h3>
+                <form action="#">
+                    <label>Recherche
+                        <input type="text" id="personne" value="" placeholder="prénom" /></label>
+                    <table id="tablo">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Note /20</th>
+                        </tr>
+                        <tr>
+                            <td>JACQUES</td>
+                            <td>Jean</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>DUPONT</td>
+                            <td>Louise</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>DUFOUR</td>
+                            <td>Denis</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>CHARPENTIER</td>
+                            <td>Laurence</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>BEAUMONT</td>
+                            <td>Lysa</td>
+                            <td>17</td>
+                        </tr>
+                    </table>
+                </form>
+            </section>
+        </section>
+        <script src="./jquery.js"></script>
+        <script>
+            $(function () {
+                $("#personne").on("keyup", function () {
+                    let value = $("#personne").val().toLowerCase();
+                    h3 = document.querySelector('h3');
+                    h3.textContent = value;
+                    $("#tablo tr").hide();
+                    $("#tablo tr")
+                        .filter(function () {
+                            return (
+                                $(this).text().toLowerCase().indexOf(value) !== -1
+                            );
+                        })
+                        .show();
+                });
+            });
+        </script>
+    </body>
+
+</html>
+
+<!-- -1 signifie pour js "rien" "null" "je ne trouve pas" -->
